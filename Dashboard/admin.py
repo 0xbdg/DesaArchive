@@ -1,6 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 from .models import *
-from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
 
@@ -8,19 +8,10 @@ admin.site.site_header = "Administrator Panel"
 admin.site.site_title = "Archive"
 admin.site.index_title = "Dashboard"
 
-class CustomAdmin(UserAdmin):
-    model = tbl_admin
-    list_display = ['username', 'is_staff', 'is_active']
-    fieldsets = (
-        (None, {'fields': ('username', 'password')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')})
-    )
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2',  'is_active', 'is_staff', 'is_superuser')}
-        ),
-    )
-    search_fields = ( 'username')
+class SuratKeterangan(admin.ModelAdmin):
+    list_display = ("file", "upload_time")
 
-admin.site.register(tbl_admin, CustomAdmin)
+    readonly_fields = ["upload_time"]
+
+admin.site.unregister(Group)
+admin.site.register(tbl_certificate, SuratKeterangan)
