@@ -13,5 +13,23 @@ class SuratKeterangan(admin.ModelAdmin):
 
     readonly_fields = ["upload_time"]
 
+class SuratMasuk(admin.ModelAdmin):
+    list_display = ("file", "upload_time")
+
+    readonly_fields = ["upload_time"]
+
+class SuratKeluar(admin.ModelAdmin):
+    list_display = ("file", "upload_time")
+
+    readonly_fields = ["upload_time"]
+
+class Asset(admin.ModelAdmin):
+    list_display = ("file", "upload_time")
+
+    readonly_fields = ["upload_time"]
+
 admin.site.unregister(Group)
 admin.site.register(tbl_certificate, SuratKeterangan)
+admin.site.register(tbl_income, SuratMasuk)
+admin.site.register(tbl_outcome, SuratKeluar)
+admin.site.register(tbl_asset, Asset)
