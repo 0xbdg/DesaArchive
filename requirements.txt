@@ -2,3 +2,5 @@ django
 django-semantic-forms
 django-semantic-admin
 django-filter
+
+whitenoise
