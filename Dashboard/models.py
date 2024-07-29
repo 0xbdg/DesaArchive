@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.exceptions import ValidationError
 from datetime import datetime
 
@@ -13,7 +12,7 @@ def validate_file_extension(value):
 # Create your models here.
 
 class tbl_certificate(models.Model):
-    file = models.FileField(upload_to='files', validators=[validate_file_extension])
+    pdf_file = models.FileField(upload_to='files', validators=[validate_file_extension])
     upload_time = models.DateTimeField(default=datetime.now)
 
 class tbl_income(models.Model):
