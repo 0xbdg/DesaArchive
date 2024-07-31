@@ -42,7 +42,7 @@ class AccountManagerView(View):
 
     def get(self, request):
         form = self.form_class()
-        return render(request, self.template_name, context={})
+        return render(request, self.template_name, context={'form':form})
     
     def post(self, request):
         form = self.form_class(data=request.POST)
@@ -51,4 +51,4 @@ class AccountManagerView(View):
             form.save()
             return redirect('')
 
-        return render(request, self.template_name, context={})
+        return render(request, self.template_name, context={'form':form})
