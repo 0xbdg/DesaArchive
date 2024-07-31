@@ -34,3 +34,21 @@ class FilemanagerView(View):
 
     def get(self, request): 
         return render(request, self.template_name, context={})
+
+@login_required
+class AccountManagerView(View):
+    template_name = "pages/accounts.html"
+    form_class = SuperuserCreationForm()
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, context={})
+    
+    def post(self, request):
+        form = self.form_class(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('')
+
+        return render(request, self.template_name, context={})
