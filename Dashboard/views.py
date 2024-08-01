@@ -27,18 +27,16 @@ class SigninView(View):
                 login(request, user)
                 redirect('filemanager')
         return render(request, self.template_name, context={'form':form})
-    
-@login_required
+
 class FilemanagerView(View):
     template_name = "pages/filemanager.html"
 
     def get(self, request): 
         return render(request, self.template_name, context={})
 
-@login_required
 class AccountManagerView(View):
     template_name = "pages/accounts.html"
-    form_class = SuperuserCreationForm()
+    form_class = SuperuserCreationForm
 
     def get(self, request):
         form = self.form_class()

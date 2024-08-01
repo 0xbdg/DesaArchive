@@ -133,10 +133,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
-
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/' 
@@ -151,4 +147,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Other
 
-LOGIN_REDIRECT_URL = 'Dashboard.filemanager'
+LOGIN_REDIRECT_URL = 'filemanager'

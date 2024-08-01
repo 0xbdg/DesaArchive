@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import *
 
-url_patterns = [
+urlpatterns = [
     path('', SigninView.as_view(), name='signin'),
-    path('filemanager/', FilemanagerView.as_view(), name="filemanager")
+    path('file-manager/', FilemanagerView.as_view(), name="filemanager"),
+    path('account-manager/', AccountManagerView.as_view(), name="accountmanager")
 ]
