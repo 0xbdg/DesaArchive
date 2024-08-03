@@ -5,5 +5,31 @@
 {% block navbar %} {% include "components/navbar.html" %} {% endblock%}
 
 {% block contents%}
+<div class="modal-body">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+        <th>File</th>
+        <th>Extension</th>
+        <th>Category</th>
+        <th>Uploaded Date</th>
+        <th>Action</th>
+    </tr>
+    {% for document in documents%}
+    <tr>
+        <td><a href="{{ document.file.url }}" target="_blank">{{ document.file.name }}</a></td>
+        <td>{{document.get_file_extension }}</td>
+        <td>{{ document.get_category_display }}</td>
+        <td>{{ document.uploaded_at}}</td>
+        <td><button>Delete</button></td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock%}

@@ -30,9 +30,19 @@ class SigninView(View):
 
 class FilemanagerView(View):
     template_name = "pages/filemanager.html"
+    form_class = DocumentForm
 
     def get(self, request): 
-        return render(request, self.template_name, context={})
+        docs = Document.objects.all()
+        return render(request, self.template_name, context={'documents':docs})
+    
+    def post(self, request): 
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("filemanager")
+        
+        return render(request, self.template_name, context={'form':form})
 
 class AccountManagerView(View):
     template_name = "pages/accounts.html"
@@ -50,3 +60,8 @@ class AccountManagerView(View):
             return redirect('')
 
         return render(request, self.template_name, context={'form':form})
+
+# Action
+
+def delete(request, id):
+    pass

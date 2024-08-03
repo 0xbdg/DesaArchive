@@ -1,5 +1,11 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Document
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ['category', 'file']
 
 class LoginForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
