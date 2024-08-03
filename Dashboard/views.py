@@ -64,4 +64,6 @@ class AccountManagerView(View):
 # Action
 
 def delete(request, id):
-    pass
+    file = Document.objects.get(id=id)
+    file.delete()
+    return redirect("filemanager")

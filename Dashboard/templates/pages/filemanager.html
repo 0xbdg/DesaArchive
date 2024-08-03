@@ -27,7 +27,7 @@
         <td>{{document.get_file_extension }}</td>
         <td>{{ document.get_category_display }}</td>
         <td>{{ document.uploaded_at}}</td>
-        <td><button>Delete</button></td>
+        <td><a href="{% url 'del' document.id%}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>
