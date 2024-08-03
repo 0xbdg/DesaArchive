@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import *
 
@@ -19,22 +20,20 @@ class SigninView(View):
         form = self.form_class(data=request.POST)
 
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-
-            if user is not None and (user.is_superuser or user.is_staff):
-                login(request, user)
-                redirect('filemanager')
+            user = form.get_user()
+            login(request,user)
+            return redirect("filemanager")
+        
         return render(request, self.template_name, context={'form':form})
 
-class FilemanagerView(View):
+class FilemanagerView(LoginRequiredMixin,View):
     template_name = "pages/filemanager.html"
     form_class = DocumentForm
 
     def get(self, request): 
         docs = Document.objects.all()
-        return render(request, self.template_name, context={'documents':docs})
+        form = self.form_class()
+        return render(request, self.template_name, context={'documents':docs, "form":form})
     
     def post(self, request): 
         form = self.form_class(request.POST, request.FILES)
@@ -44,7 +43,7 @@ class FilemanagerView(View):
         
         return render(request, self.template_name, context={'form':form})
 
-class AccountManagerView(View):
+class AccountManagerView(LoginRequiredMixin,View):
     template_name = "pages/accounts.html"
     form_class = SuperuserCreationForm
 
@@ -63,6 +62,7 @@ class AccountManagerView(View):
 
 # Action
 
+@login_required
 def delete(request, id):
     file = Document.objects.get(id=id)
     file.delete()

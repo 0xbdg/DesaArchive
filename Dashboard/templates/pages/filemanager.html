@@ -5,14 +5,26 @@
 {% block navbar %} {% include "components/navbar.html" %} {% endblock%}
 
 {% block contents%}
-<div class="modal-body">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-</div>
 
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Upload</button>
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Upload file</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+  
 <table class="table">
     <tr>
         <th>File</th>

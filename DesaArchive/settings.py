@@ -148,3 +148,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Other
 
 LOGIN_REDIRECT_URL = 'filemanager'
+LOGIN_URL = "signin"
