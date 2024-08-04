@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 
-
 import os
 from .forms import *
 
@@ -60,7 +59,7 @@ class AccountManagerView(LoginRequiredMixin,View):
 
         if form.is_valid():
             form.save()
-            return redirect('filemanager')
+            return redirect('accountmanager')
 
         return render(request, self.template_name, context={'form':form})
 

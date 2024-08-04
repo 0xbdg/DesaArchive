@@ -5,9 +5,30 @@
 {% block navbar %}{% include "components/navbar.html" %}{%endblock%}
 
 {% block contents %}
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Add superuser</button>
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Create superuser</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p}}
+
+              <button type="submit">Create</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+
 <table class="table">
     <thead>
       <tr>
+        <th scope="col">ID</th>
         <th scope="col">Username</th>
         <th scope="col">Superuser</th>
         <th scope="col">Active</th>
@@ -17,7 +38,8 @@
     <tbody>
       {% for user in users%}
       <tr>
-        <th scope="row">{{user.username}}</th>
+        <td scope="row">{{user.id}}</td>
+        <td>{{user.username}}</td>
         <td>{{user.is_superuser}}</td>
         <td>{{user.is_active}}</td>
         <td><a href="#">Edit</a>, <a href="#">Delete</a></td>
