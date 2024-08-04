@@ -3,7 +3,10 @@ from django.views.generic import View
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conf import settings
 
+
+import os
 from .forms import *
 
 # Create your views here.
@@ -57,7 +60,7 @@ class AccountManagerView(LoginRequiredMixin,View):
 
         if form.is_valid():
             form.save()
-            return redirect('')
+            return redirect('filemanager')
 
         return render(request, self.template_name, context={'form':form})
 
@@ -67,4 +70,5 @@ class AccountManagerView(LoginRequiredMixin,View):
 def delete(request, id):
     file = Document.objects.get(id=id)
     file.delete()
+    os.remove(settings.MEDIA_ROOT / file.file.name)
     return redirect("filemanager")

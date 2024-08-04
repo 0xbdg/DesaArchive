@@ -9,7 +9,8 @@
     <thead>
       <tr>
         <th scope="col">Username</th>
-        <th scope="col">Hashed Password</th>
+        <th scope="col">Superuser</th>
+        <th scope="col">Active</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -17,10 +18,11 @@
       {% for user in users%}
       <tr>
         <th scope="row">{{user.username}}</th>
-        <td>{{user.password}}</td>
+        <td>{{user.is_superuser}}</td>
+        <td>{{user.is_active}}</td>
         <td><a href="#">Edit</a>, <a href="#">Delete</a></td>
       </tr>
       {% endfor %}
     </tbody>
-  </table>
+</table>
 {% endblock %}
