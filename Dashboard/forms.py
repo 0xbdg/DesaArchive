@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from .models import Document
 
 class DocumentForm(forms.ModelForm):
@@ -7,7 +8,7 @@ class DocumentForm(forms.ModelForm):
         model = Document
         fields = ['category', 'file']
 
-class LoginForm(forms.ModelForm):
+class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
 

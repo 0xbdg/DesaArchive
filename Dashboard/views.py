@@ -49,7 +49,8 @@ class AccountManagerView(LoginRequiredMixin,View):
 
     def get(self, request):
         form = self.form_class()
-        return render(request, self.template_name, context={'form':form})
+        user = User.objects.all()
+        return render(request, self.template_name, context={'form':form, 'users':user})
     
     def post(self, request):
         form = self.form_class(data=request.POST)
