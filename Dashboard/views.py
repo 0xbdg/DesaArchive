@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
@@ -77,3 +77,9 @@ def user_delete(request, id):
     user = User.objects.get(id=id)
     user.delete()
     return redirect('accountmanager')
+
+@login_required
+def user_logout(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("signin")

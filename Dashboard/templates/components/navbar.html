@@ -9,9 +9,9 @@
         <a class="nav-link" aria-current="page" href="{% url 'filemanager' %}">File Manager</a>
         <a class="nav-link" href="{% url 'accountmanager' %}">User Manager</a>
       </div>
-    </div>
-    {% if user.is_authenticated%}
-      <p>Welcome, {{user.get_username}} <form method="post" action="">{% csrf_token %}<button type="submit">Logout</button></form></p>
+      {% if user.is_authenticated%}
+      <p>Welcome, {{user.get_username}} <form method="post" action="{% url 'logout'%}">{% csrf_token %}<button type="submit">Logout</button></form></p>
     {% endif %}
+    </div>
   </div>
 </nav>
