@@ -71,3 +71,9 @@ def delete(request, id):
     file.delete()
     os.remove(settings.MEDIA_ROOT / file.file.name)
     return redirect("filemanager")
+
+@login_required
+def user_delete(request, id):
+    user = User.objects.get(id=id)
+    user.delete()
+    return redirect('accountmanager')

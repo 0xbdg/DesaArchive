@@ -28,7 +28,6 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Username</th>
         <th scope="col">Superuser</th>
         <th scope="col">Active</th>
@@ -38,11 +37,10 @@
     <tbody>
       {% for user in users%}
       <tr>
-        <td scope="row">{{user.id}}</td>
         <td>{{user.username}}</td>
         <td>{{user.is_superuser}}</td>
         <td>{{user.is_active}}</td>
-        <td><a href="#">Edit</a>, <a href="#">Delete</a></td>
+        <td><a href="{% url 'user-del' user.id %}">Delete</a></td>
       </tr>
       {% endfor %}
     </tbody>
