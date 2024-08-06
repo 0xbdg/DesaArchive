@@ -1,6 +1,4 @@
 django
-django-adminlte-ui
-psycopg2
-psycopg2-binary
+django-single-session
 pillow
 whitenoise
