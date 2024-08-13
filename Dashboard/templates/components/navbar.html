@@ -1,17 +1,66 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Archive</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" href="{% url 'filemanager' %}">File Manager</a>
-        <a class="nav-link" href="{% url 'accountmanager' %}">User Manager</a>
+{% load static %}
+<nav class="sidebar">
+  <header>
+    <div class="image-text">
+      <span class="image">
+        <img src="{% static 'img/logo.png' %}" alt="logo" class="image" />
+      </span>
+
+      <div class="text header-text">
+        <span class="name">ARSIP</span>
+        <span class="profession">Welcome,{{ user.get_username }}</span>
       </div>
-      {% if user.is_authenticated%}
-      <p>Welcome, {{user.get_username}} <form method="post" action="{% url 'logout'%}">{% csrf_token %}<button type="submit">Logout</button></form></p>
-    {% endif %}
+    </div>
+  </header>
+  
+  <div class="menu-bar">
+    <div class="menu">
+      <ul class="menu-links">
+        <li class="nav-link">
+          <a href="#">
+            <i class="bx bx-home-alt" id="logo"></i>
+            <span class="text nav-text">Dashboard</span>
+          </a>
+        </li>
+        <div class="file">
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-folder" id="logo"></i>
+              <span class="text nav-text">File manager</span>
+              <i class="bx bx-chevron-down" id="logo1"></i>
+            </a>
+          </li>
+          <ul class="dropdown__menu">
+            <li class="sub">
+              <a href="" class="dropdown__link"
+                ><i class="bx bx-file" id="logo"></i>Surat masuk</a
+              >
+            </li>
+            <li class="sub">
+              <a href="" class="dropdown__link"
+                ><i class="bx bx-file" id="logo"></i>Surat keluar</a
+              >
+            </li>
+            <li class="sub">
+              <a href="" class="dropdown__link"
+                ><i class="bx bx-file" id="logo"></i>asset</a
+              >
+            </li>
+          </ul>
+        </div>
+        <li class="nav-link">
+          <a href="#">
+            <i class="bx bxs-user" id="logo"></i>
+            <span class="text nav-text">User Manager</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a href="#">
+            <i class="bx bx-log-out" id="logo"></i>
+            <span class="text nav-text">Logout</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

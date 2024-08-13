@@ -1,0 +1,96 @@
+#login {
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: #6482AD;
+}
+
+.border {
+    width:30%;
+    height:30%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: #7FA1C3 ;
+    flex-direction:column;
+    border: none;
+    border-radius: 0.375rem ;
+   
+}
+
+
+.isi {
+    display:flex;
+    gap:1rem;
+    flex-direction:column;
+    align-items:center;
+    padding:  30px 40px;
+    color: white;
+}
+.login {
+    font-weight: bold;
+}
+
+
+.name1 {
+    flex-direction: column;
+    margin: 2px;
+     
+}
+
+.name2 {
+    margin:2px ;
+}
+
+.input-box1 {
+    flex-direction: column;
+
+    
+}
+
+.tombol {
+    border-radius: 20px;
+    width:80%;
+    height: 80%;
+    margin: 8px;
+    background: #E2DAD6;
+    color: black;
+    font-weight: bold;
+    
+}
+
+.welcome {
+    margin:0;
+    margin-right:10px;
+}
+
+.tampilan{
+    width:100%;
+    float:right;
+   
+    display:flex;
+    flex-direction:row;
+    gap:3rem;
+    justify-content:space-between;
+    align-items:center;
+    
+}
+
+#nav{
+   display:flex;
+   justify-content:space-between
+}
+
+#akun {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin-right:50px;
+}
+
+#btn {
+    margin-left:5px;
+   padding:5px;
+   border-radius:0.5rem;
+}

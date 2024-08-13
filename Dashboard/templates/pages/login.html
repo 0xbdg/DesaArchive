@@ -2,16 +2,26 @@
 {% block title %} Login {% endblock %}
 
 {% block contents %}
-<form method="POST" action="{% url 'signin' %}">
+<form method="POST" id="login" action="{% url 'signin' %}">
   {% csrf_token %}
-  <div class="mb-3">
-    <label for="exampleInputUsername1" class="form-label">Username</label>
-    {{ form.username }}
+
+  
+  <div class="border">
+    <div class="isi">
+      <h3 class="login">Login</h3>
+      <div>
+        <p class="name1">Username : </p>
+        {{ form.username }}
+      </div>
+      <div>
+        <p class="name2">Password : </p>
+        {{ form.password }}
+      </div>
+   
+      <button class="tombol" type="submit" class="btn-primary">Login</button>
+ 
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    {{ form.password }}
-  </div>
-  <button type="submit" class="btn btn-primary">Log In</button>
 </form>
+
 {% endblock %}
