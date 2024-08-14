@@ -6,43 +6,41 @@
 
 {% block contents%}
 
-<div style="display: flex">
 <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Upload</button>
 <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Upload file</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Upload</button>
-            </form>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Upload file</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Upload</button>
+        </form>
       </div>
     </div>
+  </div>
 </div>
   
 <table class="table">
-    <tr>
-        <th>File</th>
-        <th>Extension</th>
-        <th>Category</th>
-        <th>Uploaded Date</th>
-        <th>Action</th>
-    </tr>
-    {% for document in documents%}
-    <tr>
-        <td>{{ document.file.name }}</td>
-        <td>{{ document.get_file_extension }}</td>
-        <td>{{ document.get_category_display }}</td>
-        <td>{{ document.uploaded_at}}</td>
-        <td><a href="{% url 'del' document.id%}">Delete</a>, <a download href="{{document.file.url}}" target="_blank">Download</a></td>
-    </tr>
-    {% endfor %}
+  <tr>
+    <th>File</th>
+    <th>Extension</th>
+    <th>Category</th>
+    <th>Uploaded Date</th>
+    <th>Action</th>
+  </tr>
+  {% for document in documents%}
+  <tr>
+    <td>{{ document.file.name }}</td>
+    <td>{{ document.get_file_extension }}</td>
+    <td>{{ document.get_category_display }}</td>
+    <td>{{ document.uploaded_at}}</td>
+    <td><a href="{% url 'del' document.id%}">Delete</a>, <a download href="{{document.file.url}}" target="_blank">Download</a></td>
+  </tr>
+  {% endfor %}
 </table>
-</div>
 {% endblock%}
