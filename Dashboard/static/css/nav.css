@@ -4,7 +4,7 @@
 .sidebar .text {
   font-size: 16px;
   font-weight: 500;
-  color: #707070;
+  color: white;
 }
 
 .sidebar .image {
@@ -19,9 +19,9 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 40%;
+  width: 27%;
   padding: 10px 14px;
-  background: black;
+  background: #1b1e1f;
 }
 
 .sidebar li {
@@ -41,12 +41,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #707070;
+  color: white;
   transition: all 0.2 ease;
   min-width: 60px;
 }
 .sidebar li .text {
-  color: #707070;
+  color: white;
   transition: all 0.2 ease;
 }
 
@@ -126,10 +126,20 @@ a:hover #logo1 {
   color: white;
 }
 
-.isi {
-}
-
 .tampilan {
   display: flex;
   height: 100%;
+}
+
+.look {
+  display: flex;
+  height: 100%;
+}
+
+.tv {
+  width: 100%;
+}
+
+.isi2 {
+  margin-top: 10px;
 }
