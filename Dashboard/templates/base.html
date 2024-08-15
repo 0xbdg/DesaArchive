@@ -25,13 +25,13 @@
     ></script>
   </head>
   <body>
+    {% block login_page %} {% endblock %}
+    
     <div class="look">
       {% block navbar %} {% endblock %}
       <div class="tv">
         <div class="isi2">{% block contents %} {% endblock %}</div>
       </div>
     </div>
-
-    {% block login_page %} {% endblock %}
   </body>
 </html>
