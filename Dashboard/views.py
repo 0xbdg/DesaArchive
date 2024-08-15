@@ -46,7 +46,7 @@ class FilemanagerView(LoginRequiredMixin,View):
         return render(request, self.template_name, context={'form':form})
 
 class AccountManagerView(LoginRequiredMixin,View):
-    template_name = "pages/accounts.html"
+    template_name = "pages/usermanager.html"
     form_class = SuperuserCreationForm
 
     def get(self, request):
@@ -80,6 +80,5 @@ def user_delete(request, id):
 
 @login_required
 def user_logout(request):
-    if request.method == "POST":
-        logout(request)
-        return redirect("signin")
+    logout(request)
+    return redirect("signin")
