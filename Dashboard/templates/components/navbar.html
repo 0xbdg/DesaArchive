@@ -3,12 +3,12 @@
   <header>
     <div class="image-text">
       <span class="image">
-        <img src="../Dashboard/static/img/logo.png" alt="logo" class="image" />
+        <img src="{% static 'img/logo.png' %}" alt="logo" class="image" />
       </span>
 
       <div class="text header-text">
         <span class="name">ARSIP</span>
-        <span class="profession">Welcome,user!</span>
+        <span class="profession">Welcome,{{ user.get_username }}</span>
       </div>
     </div>
   </header>
@@ -49,7 +49,7 @@
           </ul>
         </div>
         <li class="nav-link">
-          <a href="#">
+          <a href="{% url 'accountmanager'%}">
             <i class="bx bxs-user" id="logo"></i>
             <span class="text nav-text">User Manager</span>
           </a>
