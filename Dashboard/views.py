@@ -62,6 +62,13 @@ class SuperuserManagerView(LoginRequiredMixin,View):
             return redirect('accountmanager')
 
         return render(request, self.template_name, context={'form':form})
+    
+class DashboardView(LoginRequiredMixin, View):
+    template_name = "pages/dashboard.html"
+    def get(self, request):
+        user_count = User.objects.count()
+        file_count = Document.objects.count()
+        return render(request, self.template_name, {"total_user":user_count, 'total_file':file_count})
 
 # Action
 

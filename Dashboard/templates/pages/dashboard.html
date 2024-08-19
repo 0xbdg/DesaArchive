@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block navbar %} {% include "components/navbar.html" %}{% endblock navbar%}
+
+{% block contents %}
+<main class="main-content">
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p>{{ total_user }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Files</h3>
+            <p>{{ total_file}}</p>
+        </div>
+    </div>
+
+    <div class="log-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date/Time</th>
+                    <th>User</th>
+                    <th>Activity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2024-08-18 10:00</td>
+                    <td>Alice</td>
+                    <td>Login</td>
+                    <td>Success</td>
+                </tr>
+                <tr>
+                    <td>2024-08-17 14:30</td>
+                    <td>Bob</td>
+                    <td>Upload</td>
+                    <td>Success</td>
+                </tr>
+                <!-- Additional rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}
