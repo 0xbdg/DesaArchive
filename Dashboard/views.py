@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -45,7 +45,7 @@ class FilemanagerView(LoginRequiredMixin,View):
         
         return render(request, self.template_name, context={'form':form})
 
-class AccountManagerView(LoginRequiredMixin,View):
+class SuperuserManagerView(LoginRequiredMixin,View):
     template_name = "pages/usermanager.html"
     form_class = SuperuserCreationForm
 
@@ -66,7 +66,7 @@ class AccountManagerView(LoginRequiredMixin,View):
 # Action
 
 @login_required
-def delete(request, id):
+def file_delete(request, id):
     file = Document.objects.get(id=id)
     file.delete()
     os.remove(settings.MEDIA_ROOT / file.file.name)
@@ -77,6 +77,31 @@ def user_delete(request, id):
     user = User.objects.get(id=id)
     user.delete()
     return redirect('accountmanager')
+
+@login_required
+def user_update(request, id):
+    user = get_object_or_404(User, id=id)
+
+    if request.method == 'POST':
+        form = SuperuserUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            password1 = form.cleaned_data.get('password1')
+            password2 = form.cleaned_data.get('password2')
+
+            if password1:
+                if password1 == password2:
+                    user.set_password(password1)
+                else:
+                    form.add_error('password2', "Passwords do not match.")
+                    return render(request, 'pages/userupdate.html', {'form': form, 'user': user})
+
+            user.save()
+            return redirect('accountmanager')
+    else:
+        form = SuperuserUpdateForm(instance=user)
+
+    return render(request, 'pages/userupdate.html', {'form': form, 'user': user})
 
 @login_required
 def user_logout(request):

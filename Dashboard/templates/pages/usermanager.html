@@ -40,7 +40,7 @@
         <td>{{user.username}}</td>
         <td>{{user.is_superuser}}</td>
         <td>{{user.is_active}}</td>
-        <td><a href="{% url 'user-del' user.id %}">Delete</a></td>
+        <td><a href="{% url 'user-edit' user.id %}">Edit</a> ,<a href="{% url 'user-del' user.id %}">Delete</a></td>
       </tr>
       {% endfor %}
     </tbody>

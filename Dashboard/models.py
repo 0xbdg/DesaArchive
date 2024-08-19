@@ -21,3 +21,5 @@ class Document(models.Model):
 
     def __str__(self):
         return f"{self.get_category_display()} - {self.file.name}"
+    
+class Log(models.Model): pass
