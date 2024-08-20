@@ -303,3 +303,25 @@ a:hover #logo1 {
 .isi2 {
   margin-top: 10px;
 }
+
+/* table */
+.table-container {
+  height: 250px; 
+  overflow-y: auto; 
+  border: 1px solid #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}

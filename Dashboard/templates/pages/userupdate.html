@@ -6,7 +6,15 @@
 <h1>Edit User</h1>
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+  <label for="username">Username :</label>
+  {{ form.username }}
+  <br>
+  <label for="password1">New password :</label>
+  {{ form.password1 }}
+  <br>
+  <label for="password2">Confirm password :</label>
+  {{ form.password2 }}
+  <br>
   <button type="submit">Save changes</button>
 </form>
 {% endblock %}
