@@ -39,7 +39,7 @@
       <tbody>
           <tr>
             {% for document in documents%}
-            {% if document.category == "keluar" %}
+            {% if document.category == "keterangan" %}
             <tr>
               <td>{{ document.file.name }}</td>
               <td>{{ document.get_file_extension }}</td>
