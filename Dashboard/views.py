@@ -24,10 +24,11 @@ class SigninView(View):
         if form.is_valid():
             user = form.get_user()
             login(request,user)
-            return redirect("filemanager")
+            return redirect("dashboard")
         
         return render(request, self.template_name, context={'form':form})
 
+'''
 class FilemanagerView(LoginRequiredMixin,View):
     template_name = "pages/filemanager.html"
     form_class = DocumentForm
@@ -42,6 +43,75 @@ class FilemanagerView(LoginRequiredMixin,View):
         if form.is_valid():
             form.save()
             return redirect("filemanager")
+        
+        return render(request, self.template_name, context={'form':form})
+'''
+
+class SuratKeteranganView(LoginRequiredMixin,View):
+    template_name = "pages/filemanager/suratketerangan.html"
+    form_class = SuratKeteranganForm
+
+    def get(self, request): 
+        docs = SuratKeterangan.objects.all()
+        form = self.form_class()
+        return render(request, self.template_name, context={'documents':docs, "form":form})
+    
+    def post(self, request): 
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("keterangan")
+        
+        return render(request, self.template_name, context={'form':form})
+    
+class SuratMasukView(LoginRequiredMixin,View):
+    template_name = "pages/filemanager/suratmasuk.html"
+    form_class = SuratMasukForm
+
+    def get(self, request): 
+        docs = SuratMasuk.objects.all()
+        form = self.form_class()
+        return render(request, self.template_name, context={'documents':docs, "form":form})
+    
+    def post(self, request): 
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("masuk")
+        
+        return render(request, self.template_name, context={'form':form})
+    
+class SuratKeluarView(LoginRequiredMixin,View):
+    template_name = "pages/filemanager/suratkeluar.html"
+    form_class = SuratMasukForm
+
+    def get(self, request): 
+        docs = SuratKeluar.objects.all()
+        form = self.form_class()
+        return render(request, self.template_name, context={'documents':docs, "form":form})
+    
+    def post(self, request): 
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("keluar")
+        
+        return render(request, self.template_name, context={'form':form})
+    
+class AssetView(LoginRequiredMixin,View):
+    template_name = "pages/filemanager/asset.html"
+    form_class = SuratMasukForm
+
+    def get(self, request): 
+        docs = Asset.objects.all()
+        form = self.form_class()
+        return render(request, self.template_name, context={'documents':docs, "form":form})
+    
+    def post(self, request): 
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("asset")
         
         return render(request, self.template_name, context={'form':form})
 
@@ -67,17 +137,48 @@ class DashboardView(LoginRequiredMixin, View):
     template_name = "pages/dashboard.html"
     def get(self, request):
         user_count = User.objects.count()
-        file_count = Document.objects.count()
-        return render(request, self.template_name, {"total_user":user_count, 'total_file':file_count})
+        suratketerangan_count = SuratKeterangan.objects.count()
+        suratmasuk_count = SuratMasuk.objects.count()
+        suratkeluar_count = SuratKeluar.objects.count()
+        asset_count = Asset.objects.count()
+        return render(request, self.template_name, {"jumlah_pengguna":user_count, 'jumlah_keterangan':suratketerangan_count,'jumlah_masuk':suratmasuk_count, 'jumlah_keluar':suratkeluar_count, 'jumlah_aset':asset_count})
 
 # Action
-
+'''
 @login_required
 def file_delete(request, id):
     file = Document.objects.get(id=id)
     file.delete()
     os.remove(settings.MEDIA_ROOT / file.file.name)
     return redirect("filemanager")
+'''
+@login_required
+def keterangan_delete(request, id):
+    file = SuratKeterangan.objects.get(id=id)
+    file.delete()
+    os.remove(settings.MEDIA_ROOT / file.file.name)
+    return redirect("keterangan")
+
+@login_required
+def masuk_delete(request, id):
+    file = SuratMasuk.objects.get(id=id)
+    file.delete()
+    os.remove(settings.MEDIA_ROOT / file.file.name)
+    return redirect("masuk")
+
+@login_required
+def keluar_delete(request, id):
+    file = SuratKeluar.objects.get(id=id)
+    file.delete()
+    os.remove(settings.MEDIA_ROOT / file.file.name)
+    return redirect("keluar")
+
+@login_required
+def aset_delete(request, id):
+    file = Asset.objects.get(id=id)
+    file.delete()
+    os.remove(settings.MEDIA_ROOT / file.file.name)
+    return redirect("asset")
 
 @login_required
 def user_delete(request, id):

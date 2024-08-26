@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} File Manager {% endblock%}
+{% block title %} File Manager | Asset {% endblock%}
 
 {% block navbar %} {% include "components/navbar.html" %} {% endblock%}
 
@@ -29,7 +29,6 @@
   <tr>
     <th>File</th>
     <th>Extension</th>
-    <th>Category</th>
     <th>Uploaded Date</th>
     <th>Action</th>
   </tr>
@@ -37,9 +36,8 @@
   <tr>
     <td>{{ document.file.name }}</td>
     <td>{{ document.get_file_extension }}</td>
-    <td>{{ document.get_category_display }}</td>
     <td>{{ document.uploaded_at}}</td>
-    <td><a href="{% url 'del' document.id%}">Delete</a>, <a download href="{{document.file.url}}" target="_blank">Download</a></td>
+    <td><a href="{% url 'a-del' document.id%}">Delete</a>, <a download href="{{document.file.url}}" target="_blank">Download</a></td>
   </tr>
   {% endfor %}
 </table>

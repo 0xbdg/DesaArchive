@@ -45,8 +45,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -126,8 +126,8 @@ if DEBUG == False:
         os.path.join(BASE_DIR,"static/")
     ]
 
-MEDIA_URL = '/media/' 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/Dokumen/' 
+MEDIA_ROOT = BASE_DIR / 'Dokumen'
 
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -138,18 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Other
 
-LOGIN_REDIRECT_URL = 'filemanager'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = "signin"
-
-
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-SECURE_HSTS_SECONDS = 86400
-SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-SECURE_SSL_REDIRECT = False

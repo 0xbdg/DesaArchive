@@ -5,44 +5,33 @@
 {% block navbar %} {% include "components/navbar.html" %}{% endblock navbar%}
 
 {% block contents %}
-<main class="main-content">
-    <div class="stats">
-        <div class="stat-card">
-            <h3>Total Users</h3>
-            <p>{{ total_user }}</p>
-        </div>
-        <div class="stat-card">
-            <h3>Total Files</h3>
-            <p>{{ total_file}}</p>
-        </div>
-    </div>
-
-    <div class="log-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Date/Time</th>
-                    <th>User</th>
-                    <th>Activity</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2024-08-18 10:00</td>
-                    <td>Alice</td>
-                    <td>Login</td>
-                    <td>Success</td>
-                </tr>
-                <tr>
-                    <td>2024-08-17 14:30</td>
-                    <td>Bob</td>
-                    <td>Upload</td>
-                    <td>Success</td>
-                </tr>
-                <!-- Additional rows as needed -->
-            </tbody>
-        </table>
-    </div>
-</main>
+<div class="container">
+    <header>
+        <h1>Dashboard Admin</h1>
+    </header>
+    <main>
+        <section class="dashboard">
+            <div class="card">
+                <h2>Jumlah User</h2>
+                <p class="number">{{ jumlah_pengguna }}</p>
+            </div>
+            <div class="card">
+                <h2>Jumlah Surat Keterangan</h2>
+                <p class="number">{{ jumlah_keterangan }}</p>
+            </div>
+            <div class="card">
+                <h2>Jumlah Surat Masuk</h2>
+                <p class="number">{{ jumlah_masuk }}</p>
+            </div>
+            <div class="card">
+                <h2>Jumlah Surat Keluar</h2>
+                <p class="number">{{ jumlah_keluar}}</p>
+            </div>
+            <div class="card">
+                <h2>Jumlah Asset</h2>
+                <p class="number">{{ jumlah_aset }}</p>
+            </div>
+        </section>
+    </main>
+</div>
 {% endblock %}

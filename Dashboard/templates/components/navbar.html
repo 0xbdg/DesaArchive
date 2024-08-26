@@ -24,7 +24,7 @@
         </li>
         <div class="file">
           <li class="nav-link">
-            <a href="{% url 'filemanager'%}">
+            <a href="">
               <i class="bx bx-folder" id="logo"></i>
               <span class="text nav-text">File manager</span>
               <i class="bx bx-chevron-down" id="logo1"></i>
@@ -32,18 +32,23 @@
           </li>
           <ul class="dropdown__menu">
             <li class="sub">
-              <a href="" class="dropdown__link"
+              <a href="{% url 'keterangan'%}" class="dropdown__link"
+                ><i class="bx bx-file" id="logo"></i>Surat keterangan</a
+              >
+            </li>
+            <li class="sub">
+              <a href="{% url 'masuk'%}" class="dropdown__link"
                 ><i class="bx bx-file" id="logo"></i>Surat masuk</a
               >
             </li>
             <li class="sub">
-              <a href="" class="dropdown__link"
+              <a href="{% url 'keluar'%}" class="dropdown__link"
                 ><i class="bx bx-file" id="logo"></i>Surat keluar</a
               >
             </li>
             <li class="sub">
-              <a href="" class="dropdown__link"
-                ><i class="bx bx-file" id="logo"></i>asset</a
+              <a href="{% url 'asset'%}" class="dropdown__link"
+                ><i class="bx bx-file" id="logo"></i>Asset</a
               >
             </li>
           </ul>

@@ -1,12 +1,33 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
-from .models import Document
+from .models import *
 
+'''
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ['category', 'file']
+        fields = ['category','file']
+'''
+class SuratKeteranganForm(forms.ModelForm):
+    class Meta:
+        model = SuratKeterangan
+        fields = ['file']
+
+class SuratMasukForm(forms.ModelForm):
+    class Meta:
+        model = SuratMasuk
+        fields = ['file']
+
+class SuratKeluarForm(forms.ModelForm):
+    class Meta:
+        model = SuratKeluar
+        fields = ['file']
+
+class AsetForm(forms.ModelForm):
+    class Meta:
+        model = Asset
+        fields = ['file']
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
