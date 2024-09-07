@@ -10,7 +10,7 @@
 </p>
 
 
-<p align="center">Simple description of what your project do or how to use it</p>
+<p align="center">Simple File Management System web app</p>
 
 
 <p align="center">
